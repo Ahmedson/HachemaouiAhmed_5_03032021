@@ -1,0 +1,316 @@
+@font-face {
+    font-family: "belligerent";
+    src: url("../font/belligerent.woff") format("woff"),
+        url("../font/belligerent.ttf") format("ttf");
+
+  }
+$border-radius: 0.5rem;
+
+html, body, *{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    height: 100%;
+}
+
+header, footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(241, 233, 240);
+    padding: 0.5rem 3rem 0 3rem;
+    height: 6rem;
+    a{
+        text-decoration: none;
+    }
+    #link-home-page-product{
+        margin-right:1.5rem;
+    }
+    .logo{
+        height: 4.5rem;
+        &.footer{
+            height: 3rem;
+        }
+    }
+    .lien-panier{
+        position: relative;
+        span{
+            display: none;
+            position: absolute;
+            right: -5px;
+            border-radius: 50%;
+            width: 1.1rem;
+            height: 1.1rem;
+            text-align: center;
+            vertical-align: middle;
+            background-color: red;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .visible{
+            display: inline;
+        }
+    }
+}
+
+footer{
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+    width: 75%;
+    margin: auto;
+    margin-top: 3.3rem;
+    padding: 1.5rem;
+    font-family: belligerent ,Arial, Helvetica, sans-serif;
+    // background: linear-gradient(to right, rgb(199 , 131, 76), rgb(118, 85, 201));
+    background-color: rgb(241, 233, 240);
+    border-radius: $border-radius;
+    border-top: 3px solid rgb( 199 , 131, 76);
+    border-left: 3px solid rgb( 199 , 131, 76);
+    border-bottom:3px solid rgb( 118, 85, 201);
+    border-right: 3px solid rgb( 118, 85, 201);
+}
+
+section.page-accueil{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 33%);
+    padding: 3rem;
+    article{
+        text-align: center;
+        border: 3px solid rgb( 118, 85, 201);
+        border-radius: $border-radius;
+        padding: 0.6rem;
+        margin: 0.6rem;
+        .image{
+            min-height: 225px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image, .info{
+            border: 3px solid rgb( 199 , 131, 76);
+            border-radius: $border-radius;
+            padding: 0.6rem;
+            margin: 0.6rem;
+            img{
+                border-radius: $border-radius;
+                width: 95%;
+            }
+            a{
+                color: black;
+                h2{
+                    margin-top: 0.5rem;
+                    font-family: belligerent ,Arial, Helvetica, sans-serif;
+                }
+                p{
+                    margin-top: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+        form{
+            margin-top: 1.5rem;
+        }
+        .prix-et-panier{
+            background-color: rgb(241, 233, 240);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 80%;
+            margin: 1.5rem auto;
+            border-radius: $border-radius;
+            padding: 0.5rem 0;
+            .prix{
+                font-family: belligerent ,Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 1.2rem;
+                padding-left: 1rem;
+            }
+            img{
+                height: 3rem;
+                width: 3rem;
+                cursor: pointer;
+                padding-right: 1rem;
+            }
+        }
+    }
+}
+
+section.page-produit{
+    article{
+        display: flex;
+        width: 75%;
+        margin: auto;
+        text-align: center;
+        border: 3px solid rgb( 118, 85, 201);
+        border-radius: $border-radius;
+        padding: 1rem;
+        margin-top: 3.3rem;
+        margin-bottom: 3.3rem;
+        .image{
+            border: 3px solid rgb( 199 , 131, 76);
+            border-radius: $border-radius;
+            padding: 0.6rem;
+            margin: 0.6rem;
+            width: 50%;
+            img{
+                border-radius: $border-radius;
+                width: 100%;
+            }
+        }
+        .info-panier{
+            border: 3px solid rgb( 199 , 131, 76);
+            border-radius: $border-radius;
+            padding: 0.6rem;
+            margin: 0.6rem;
+            width: 50%;
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 65%;
+            h2{
+                font-family: belligerent ,Arial, Helvetica, sans-serif;
+            }
+            p{
+                width: 80%;
+                margin: 0 auto;
+            }
+            .prix{
+                font-family: belligerent ,Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+        }
+        .panier{
+            background-color: rgb(241, 233, 240);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            margin: 2rem auto;
+            border-radius: $border-radius;
+            padding: 0.5rem 0;
+            cursor: pointer;
+            user-select: none;
+            p{
+                font-family: belligerent ,Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin-right: 1rem;
+            }
+            img{
+                height: 3rem;
+                width: 3rem;
+            }
+        }
+    }
+}
+
+section.page-panier{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 40vh;
+    border: 3px solid rgb( 118, 85, 201);
+    border-radius: $border-radius;
+    width: 60%;
+    margin: auto;
+    margin-top: 2.3rem;
+    margin-bottom: 2.3rem;
+    article{
+        display: flex;
+        border: 3px solid rgb( 199 , 131, 76);
+        border-radius: $border-radius;
+        padding: .6rem;
+        margin: .6rem;
+        text-align: center;
+        .image{
+            height: 100%;
+            width: 50%;
+            img{
+                border-radius: $border-radius;
+                width: 80%;
+                height: 80%;
+            }
+        }
+        .info-panier{
+            border-radius: $border-radius;
+            padding: 0.6rem;
+            margin: 0.6rem;
+            width: 50%;
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 65%;
+            h2{
+                font-family: belligerent ,Arial, Helvetica, sans-serif;
+            }
+            p{
+                width: 80%;
+                margin: 0 auto;
+            }
+            .prix{
+                font-family: belligerent ,Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+        }
+        .panier{
+            background-color: rgb(241, 233, 240);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            margin: 1rem auto;
+            border-radius: $border-radius;
+            padding: 0.5rem 0;
+            font-family: belligerent ,Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            span{
+                padding: 0 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.divSuppression{
+    display: flex;
+    justify-content: center;
+    button{
+        padding: .5rem 4rem;
+        border-radius: $border-radius;
+        background: linear-gradient(to right, rgb( 199 , 131, 76),rgb( 118, 85, 201));
+        border: none;
+        font-family: belligerent ,Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 2.3rem;
+        // color: white;
+    }
+}
+section.panier-supprimer, section.panier-vide{
+    display: flex;
+    background-color: rgb(241, 233, 240);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: belligerent ,Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 3.8rem;
+    height: 60%;
+
+    border-top: 3px solid rgb( 199 , 131, 76);
+    border-left: 3px solid rgb( 199 , 131, 76);
+    border-bottom:3px solid rgb( 118, 85, 201);
+    border-right: 3px solid rgb( 118, 85, 201);
+}
