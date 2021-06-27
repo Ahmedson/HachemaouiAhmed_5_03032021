@@ -25,7 +25,7 @@ header, footer{
     a{
         text-decoration: none;
     }
-    #link-home-page-product{
+    .link-home{
         margin-right:1.5rem;
     }
     .logo{
@@ -297,6 +297,11 @@ section.page-panier{
         margin-bottom: 2.3rem;
         // color: white;
     }
+}
+.retourBoutique{
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
 }
 section.panier-supprimer, section.panier-vide{
     display: flex;

@@ -292,6 +292,12 @@ section.page-panier article .panier span {
   margin-bottom: 2.3rem;
 }
 
+.retourBoutique {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
 section.panier-supprimer, section.panier-vide {
   display: flex;
   background-color: #f1e9f0;

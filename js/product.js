@@ -63,7 +63,7 @@ fetch(`http://localhost:3000/api/cameras/${id}`)
         elementPanierPageProduit.addEventListener('click', (event) => {
 
             addProductInLocalStorage();
-            affichagePointRouge();
+            // affichagePointRouge();
 
         });
     })
