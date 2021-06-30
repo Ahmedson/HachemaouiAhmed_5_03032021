@@ -45,8 +45,7 @@ fetch("http://localhost:3000/api/cameras")
 
                 elementsPanierPageAccueil[i].addEventListener('click', (event) => {
 
-                    addProductInLocalStorage();
-                    // affichagePointRouge(); 
+                    addProductInLocalStorage(getIdProductOnClick());
                                  
                 });
             }
@@ -56,12 +55,8 @@ fetch("http://localhost:3000/api/cameras")
         alert('Une erreur est survenue : ' + error);
     });
 
-// %********************************************************************
-
 affichagePointRouge(); 
 
-
-// %*********************************************************************
 
 
 

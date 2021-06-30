@@ -42,10 +42,10 @@ fetch(`http://localhost:3000/api/cameras/${id}`)
                                         </form>
                                     </div>
                                     <div>
-                                    <div id="panier" class="panier">
-                                        <p>Ajouter au panier</p>
-                                        <img src="../logo/panier-ajouter.png" alt="">
-                                    </div>
+                                        <div id="panier" class="panier">
+                                            <p>Ajouter au panier</p>
+                                            <img src="../logo/panier-ajouter.png" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </article>`;
@@ -62,8 +62,8 @@ fetch(`http://localhost:3000/api/cameras/${id}`)
 
         elementPanierPageProduit.addEventListener('click', (event) => {
 
-            addProductInLocalStorage();
-            // affichagePointRouge();
+            let id = event.currentTarget.parentNode.parentNode.parentNode.id;
+            addProductInLocalStorage(id);
 
         });
     })

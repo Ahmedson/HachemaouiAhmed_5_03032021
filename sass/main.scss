@@ -3,7 +3,43 @@
     src: url("../font/belligerent.woff") format("woff"),
         url("../font/belligerent.ttf") format("ttf");
 
-  }
+}
+
+@mixin flex-center-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button-validation-and-command {
+    padding: .5rem 4rem;
+    border-radius: $border-radius;
+    @include backgroundColorDegrade;
+    border: none;
+    font-family: belligerent ,Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+@mixin border-bicolour{
+    background-color: $color-primary;
+    border-top: 3px solid $color-secondary;
+    border-left: 3px solid $color-secondary;
+    border-bottom:3px solid $color-tertiary;
+    border-right: 3px solid $color-tertiary;
+}
+
+@mixin backgroundColorDegrade {
+    background: linear-gradient(to right, $color-secondary, $color-tertiary);
+}
+
+$color-primary: rgb(241, 233, 240) ;
+$color-secondary: rgb(199 , 131, 76); 
+$color-tertiary: rgb( 118, 85, 201);
+
 $border-radius: 0.5rem;
 
 html, body, *{
@@ -19,7 +55,7 @@ header, footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(241, 233, 240);
+    background-color: $color-primary;
     padding: 0.5rem 3rem 0 3rem;
     height: 6rem;
     a{
@@ -60,20 +96,15 @@ footer{
     justify-content: center;
 }
 
-h1{
+h1, .total-prix-articles{
     text-align: center;
     width: 75%;
     margin: auto;
     margin-top: 3.3rem;
     padding: 1.5rem;
     font-family: belligerent ,Arial, Helvetica, sans-serif;
-    // background: linear-gradient(to right, rgb(199 , 131, 76), rgb(118, 85, 201));
-    background-color: rgb(241, 233, 240);
     border-radius: $border-radius;
-    border-top: 3px solid rgb( 199 , 131, 76);
-    border-left: 3px solid rgb( 199 , 131, 76);
-    border-bottom:3px solid rgb( 118, 85, 201);
-    border-right: 3px solid rgb( 118, 85, 201);
+    @include border-bicolour;
 }
 
 section.page-accueil{
@@ -82,18 +113,16 @@ section.page-accueil{
     padding: 3rem;
     article{
         text-align: center;
-        border: 3px solid rgb( 118, 85, 201);
+        border: 3px solid $color-tertiary;
         border-radius: $border-radius;
         padding: 0.6rem;
         margin: 0.6rem;
         .image{
             min-height: 225px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex-center-center;
         }
         .image, .info{
-            border: 3px solid rgb( 199 , 131, 76);
+            border: 3px solid $color-secondary;
             border-radius: $border-radius;
             padding: 0.6rem;
             margin: 0.6rem;
@@ -117,7 +146,7 @@ section.page-accueil{
             margin-top: 1.5rem;
         }
         .prix-et-panier{
-            background-color: rgb(241, 233, 240);
+            background-color: $color-primary;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -136,6 +165,10 @@ section.page-accueil{
                 width: 3rem;
                 cursor: pointer;
                 padding-right: 1rem;
+                &:hover{
+                        animation: bounce 1s infinite;
+                        animation-fill-mode: both;
+                }
             }
         }
     }
@@ -147,13 +180,13 @@ section.page-produit{
         width: 75%;
         margin: auto;
         text-align: center;
-        border: 3px solid rgb( 118, 85, 201);
+        border: 3px solid $color-tertiary;
         border-radius: $border-radius;
         padding: 1rem;
         margin-top: 3.3rem;
         margin-bottom: 3.3rem;
         .image{
-            border: 3px solid rgb( 199 , 131, 76);
+            border: 3px solid $color-secondary;
             border-radius: $border-radius;
             padding: 0.6rem;
             margin: 0.6rem;
@@ -164,7 +197,7 @@ section.page-produit{
             }
         }
         .info-panier{
-            border: 3px solid rgb( 199 , 131, 76);
+            border: 3px solid $color-secondary;
             border-radius: $border-radius;
             padding: 0.6rem;
             margin: 0.6rem;
@@ -189,16 +222,15 @@ section.page-produit{
             }
         }
         .panier{
-            background-color: rgb(241, 233, 240);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex-center-center;
+            background-color: $color-primary;
             width: 80%;
             margin: 2rem auto;
             border-radius: $border-radius;
             padding: 0.5rem 0;
             cursor: pointer;
             user-select: none;
+            transition: 0.3s ;
             p{
                 font-family: belligerent ,Arial, Helvetica, sans-serif;
                 font-weight: bold;
@@ -210,15 +242,31 @@ section.page-produit{
                 width: 3rem;
             }
         }
+        .panier:hover{
+            animation: bounce 1s infinite;
+            animation-fill-mode: both;
+        }
     }
 }
+
+@keyframes bounce{
+    1% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    99% {
+        transform: scale(1);
+    }
+  }
 
 section.page-panier{
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 40vh;
-    border: 3px solid rgb( 118, 85, 201);
+    border: 3px solid $color-tertiary;
     border-radius: $border-radius;
     width: 60%;
     margin: auto;
@@ -226,7 +274,7 @@ section.page-panier{
     margin-bottom: 2.3rem;
     article{
         display: flex;
-        border: 3px solid rgb( 199 , 131, 76);
+        border: 3px solid $color-secondary;
         border-radius: $border-radius;
         padding: .6rem;
         margin: .6rem;
@@ -265,10 +313,8 @@ section.page-panier{
             }
         }
         .panier{
-            background-color: rgb(241, 233, 240);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex-center-center;
+            background-color: $color-primary;
             width: 80%;
             margin: 1rem auto;
             border-radius: $border-radius;
@@ -283,19 +329,103 @@ section.page-panier{
         }
     }
 }
-.divSuppression{
-    display: flex;
+
+.main-container-page-commande{
+    @include backgroundColorDegrade;
+}
+
+section.section-commande{
+    display: none;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    @include border-bicolour;
+    border-radius: $border-radius;
+    width: 60%;
+    padding: 2rem;
+    margin: auto;
+    margin-top: 2.3rem;
+    margin-bottom: 2.3rem;
+    div.commande-form{
+        h2{
+            width: 20rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .input-box{
+            width: 13rem;
+            input, label{
+                width: 20rem;
+                height: 1.3rem;
+                margin: 0.3rem;
+            }
+        }
+        input, input:focus{
+            @include border-bicolour;
+            background-color: white;
+            border-radius: $border-radius;
+            padding: 0.4rem 1rem;
+            outline: none;
+        }
+        input:focus{
+            padding: 0.5rem 1.2rem;
+        }
+        div.button{
+            text-align: center;
+            #submit{
+                @include button-validation-and-command;
+                &:hover{
+                    animation: bounce 1s infinite;
+                        animation-fill-mode: both;
+                }
+            }
+        }
+    }
+    
+}
+
+.total-prix-articles{
+    h2{
+        margin-bottom: 0.7rem;
+    }
     button{
         padding: .5rem 4rem;
         border-radius: $border-radius;
-        background: linear-gradient(to right, rgb( 199 , 131, 76),rgb( 118, 85, 201));
+        @include backgroundColorDegrade;
+        border: none;
+        font-family: belligerent ,Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        margin-top: 1rem;
+        &:hover{
+            animation: bounce 1s infinite;
+                        animation-fill-mode: both;
+        }
+    }
+}
+
+.divSuppression{
+    // display: flex;
+    // justify-content: center;
+    @include flex-center-center;
+    button{
+        padding: .5rem 4rem;
+        border-radius: $border-radius;
+        background: linear-gradient(to right, $color-secondary,$color-tertiary);
         border: none;
         font-family: belligerent ,Arial, Helvetica, sans-serif;
         font-weight: bold;
         font-size: 1.2rem;
+        margin-top: 2.3rem;
         margin-bottom: 2.3rem;
         // color: white;
+        a{
+            display: block;
+            width: 100%;  
+        }
     }
 }
 .retourBoutique{
@@ -305,7 +435,6 @@ section.page-panier{
 }
 section.panier-supprimer, section.panier-vide{
     display: flex;
-    background-color: rgb(241, 233, 240);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -314,8 +443,7 @@ section.panier-supprimer, section.panier-vide{
     font-size: 3.8rem;
     height: 60%;
 
-    border-top: 3px solid rgb( 199 , 131, 76);
-    border-left: 3px solid rgb( 199 , 131, 76);
-    border-bottom:3px solid rgb( 118, 85, 201);
-    border-right: 3px solid rgb( 118, 85, 201);
+    @include border-bicolour;
 }
+
+// ******************************************

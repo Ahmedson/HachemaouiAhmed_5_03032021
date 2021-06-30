@@ -31,9 +31,55 @@
             <section class="page-panier panier-vide">
                 Vous n'avez aucun article
             </section>
+            <section id="resume">
+
+            </section>
             <div class="divSuppression">
-                <button id="delete-basket" type="button">Supprimer la totalité du panier</button>
+                <button id="delete-basket" type="button"><a href="index.html" class="retourBoutique">Retourner à la boutique</a></button>
             </div>
+            <section id="commande" class="section-commande">
+                <div class="commande-form">
+                    <h2>Détails de la facturation</h2>
+                    <form id="form">
+                        <div class="input-box">
+                            <label for="prenom">Prénom*</label>
+                            <input type="text" name="prenom" minlength="2" id="prenom" placeholder=" Jacques..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="nom">Nom*</label>
+                            <input type="text" name="nom" minlength="2" id="nom" placeholder=" Daumont..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="pays">Pays*</label>
+                            <input type="text" name="pays" id="pays" placeholder=" France..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="rue">Numéro et nom de rue*</label>
+                            <input type="text" name="rue" id="rue" placeholder=" 23 rue de courcelles..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="code-postal">Code postal*</label>
+                            <input type="text" pattern="[0-9]{5}"  name="code-postal" id="code-postal" required placeholder=" 75017...">
+                            <!-- minlength="5" maxlength="5"  -->
+                        </div>
+                        <div class="input-box">
+                            <label for="ville">Ville*</label>
+                            <input type="text" name="rue" id="ville" placeholder=" Paris..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="email">Adresse e-mail*</label>
+                            <input type="email" name="email" id="email" placeholder=" Jacques17@gmail.com..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="email">Confirmation adresse e-mail*</label>
+                            <input type="email" name="email" id="email" placeholder=" Jacques17@gmail.com..." required>
+                        </div>
+                        <div class="button">
+                            <input id="submit" type="submit" value="commander">
+                        </div>
+                    </form>
+                </div>
+            </section>
         </main>
         <footer>
             <img class="logo footer" src="../logo/logo.png" title="Logo orinoco" alt="logo orinoco">
