@@ -34,44 +34,31 @@
             <section id="resume">
 
             </section>
-            <div class="divSuppression">
+            <div class="divSuppression retourBoutique">
                 <button id="delete-basket" type="button"><a href="index.html" class="retourBoutique">Retourner à la boutique</a></button>
             </div>
-            <section id="commande" class="section-commande">
-                <div class="commande-form">
+            <section id="commande" class="section-form">
+                <div class="div-form">
                     <h2>Détails de la facturation</h2>
                     <form id="form">
                         <div class="input-box">
-                            <label for="prenom">Prénom*</label>
-                            <input type="text" name="prenom" minlength="2" id="prenom" placeholder=" Jacques..." required>
+                            <label for="firstName">Prénom*</label>
+                            <input type="text" name="firstName" minlength="2" id="firstName" placeholder=" Jacques..." required>
                         </div>
                         <div class="input-box">
-                            <label for="nom">Nom*</label>
-                            <input type="text" name="nom" minlength="2" id="nom" placeholder=" Daumont..." required>
+                            <label for="lastName">Nom*</label>
+                            <input type="text" name="lastName" minlength="2" id="lastName" placeholder=" Daumont..." required>
                         </div>
                         <div class="input-box">
-                            <label for="pays">Pays*</label>
-                            <input type="text" name="pays" id="pays" placeholder=" France..." required>
+                            <label for="address">Numéro et nom de rue*</label>
+                            <input type="text" name="address" id="address" placeholder=" 23 address de courcelles..." required>
                         </div>
                         <div class="input-box">
-                            <label for="rue">Numéro et nom de rue*</label>
-                            <input type="text" name="rue" id="rue" placeholder=" 23 rue de courcelles..." required>
-                        </div>
-                        <div class="input-box">
-                            <label for="code-postal">Code postal*</label>
-                            <input type="text" pattern="[0-9]{5}"  name="code-postal" id="code-postal" required placeholder=" 75017...">
-                            <!-- minlength="5" maxlength="5"  -->
-                        </div>
-                        <div class="input-box">
-                            <label for="ville">Ville*</label>
-                            <input type="text" name="rue" id="ville" placeholder=" Paris..." required>
+                            <label for="city">ville*</label>
+                            <input type="text" name="address" id="city" placeholder=" Paris..." required>
                         </div>
                         <div class="input-box">
                             <label for="email">Adresse e-mail*</label>
-                            <input type="email" name="email" id="email" placeholder=" Jacques17@gmail.com..." required>
-                        </div>
-                        <div class="input-box">
-                            <label for="email">Confirmation adresse e-mail*</label>
                             <input type="email" name="email" id="email" placeholder=" Jacques17@gmail.com..." required>
                         </div>
                         <div class="button">

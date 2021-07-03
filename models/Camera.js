@@ -57,10 +57,6 @@ const cameras = [
   }
 ];
 
-for(let i = 0; i < cameras.length; i++){
-  cameras[i].quantity = 0;
-}
-
 exports.find = () => {
   return new Promise((resolve, reject) => resolve(JSON.parse(JSON.stringify(cameras))));
 }
@@ -72,5 +68,3 @@ exports.findById = (id) => {
     )
   );
 }
-
-

@@ -30,7 +30,7 @@ if (localStorage.length > 0) {
                                             <form method="get" action="traitement.php">
                                                 <label for="lentille">Choisir sa lentille</label>
                                                 <select name="lentille" class="lentille">
-                                                        ${lentilles};                           
+                                                    ${lentilles}
                                                 </select>
                                             </form>
                                             <p class="prix">${article.price * getArrayProductsInLocalStorage()[i].quantity} €</p>
@@ -62,17 +62,15 @@ if (localStorage.length > 0) {
 
                             removeProductInBasket();
                             displayTotalCommande();
-
-                            
                         })
                     }
                 })
                 .catch(function (error) {
-                    alert('Une erreur est survenue : ' + error);
+                    alert('Une erreur est survenue sur la page panier.js => ' + error);
                 })
         }
     }
-    affichagePointRouge();
+    displayRedPointWithNumberOfProductsInBasket();
     displayTotalCommande();
     supprimerTotalitePanier();
     
@@ -80,15 +78,11 @@ if (localStorage.length > 0) {
 
 } else {
 
-    panierVide('Votre panier est vide');
+    modifyTextSectionBasketAndBtnDeleteBasketWhenBasketIsEmpty('Votre panier est vide');
 
 }
 
-// displayTotalCommande();
 testFormulaireComplet();
-
-
-// ajouterUn();
 
 
 

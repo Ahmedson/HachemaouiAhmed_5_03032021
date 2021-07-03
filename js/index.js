@@ -1,23 +1,25 @@
-class Product{
-    constructor(jsonProduct){
+class Product {
+    constructor(jsonProduct) {
         jsonProduct && Object.assign(this, jsonProduct);
     }
 }
 
-fetch("http://localhost:3000/api/cameras")
-    .then( data => data.json())
-    .then(jsonListProducts => {
-        for(let jsonProduct of jsonListProducts){
-            let product = new Product(jsonProduct);
+const displayAllProducts = () => {
 
-            let lentilles = "", j = 0;
-            while ( j < jsonProduct.lenses.length){                
-                lentilles += `<option value="${j}">${jsonProduct.lenses[j]}</option>`;
-                j++
-            }
+    fetch("http://localhost:3000/api/cameras")
+        .then(data => data.json())
+        .then(jsonListProducts => {
+            for (let jsonProduct of jsonListProducts) {
+                let product = new Product(jsonProduct);
 
-            document.querySelector('.page-accueil')
-                .innerHTML +=`<article id="${product._id}">
+                let lentilles = "", j = 0;
+                while (j < jsonProduct.lenses.length) {
+                    lentilles += `<option value="${j}">${jsonProduct.lenses[j]}</option>`;
+                    j++
+                }
+
+                document.querySelector('.page-accueil')
+                    .innerHTML += `<article id="${product._id}">
                                 <a class="image" href="product.html?id=${product._id}">
                                     <img src="${product.imageUrl}" alt="">
                                 </a>
@@ -37,25 +39,26 @@ fetch("http://localhost:3000/api/cameras")
                                         <img class="ajout-panier-home" src="../logo/panier-ajouter2.png" alt="">
                                     </div>
                                 </div>
-                            </article>`;   
+                            </article>`;
 
-            let elementsPanierPageAccueil = document.getElementsByClassName('ajout-panier-home');
+                let elementsPanierPageAccueil = document.getElementsByClassName('ajout-panier-home');
 
-            for (let i = 0; i < elementsPanierPageAccueil.length; i++) {
+                for (let i = 0; i < elementsPanierPageAccueil.length; i++) {
 
-                elementsPanierPageAccueil[i].addEventListener('click', (event) => {
+                    elementsPanierPageAccueil[i].addEventListener('click', (event) => {
 
-                    addProductInLocalStorage(getIdProductOnClick());
-                                 
-                });
+                        addProductInLocalStorage(getIdProductOnClick());
+                    });
+                }
             }
-        }            
-    })
-    .catch(function(error) {
-        alert('Une erreur est survenue : ' + error);
-    });
+        })
+        .catch(function (error) {
+            alert('Une erreur est survenue sur la page index.js ' + error);
+        });
+}
 
-affichagePointRouge(); 
+displayAllProducts();
+displayRedPointWithNumberOfProductsInBasket();
 
 
 
