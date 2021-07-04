@@ -28,7 +28,7 @@ const displayAllProducts = () => {
                                         <h2>Caméra vintage ${product.name}</h2>
                                         <p>${product.description}</p>
                                     </a>
-                                    <form method="get" action="traitement.php">
+                                    <form method="" action="">
                                         <label for="lentille">Choisir sa lentille</label>
                                         <select name="lentille" id="lentille" class="lentille">
                                             ${lentilles};
@@ -55,10 +55,12 @@ const displayAllProducts = () => {
         .catch(function (error) {
             alert('Une erreur est survenue sur la page index.js ' + error);
         });
+
+        displayRedPointWithNumberOfProductsInBasket();
 }
 
 displayAllProducts();
-displayRedPointWithNumberOfProductsInBasket();
+
 
 
 

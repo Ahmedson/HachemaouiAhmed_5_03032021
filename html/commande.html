@@ -12,11 +12,11 @@
 <body>
     <div class="main-container main-container-page-commande">
         <header>
-            <a href="index.html">
+            <a class="return" href="index.html">
                 <img class="logo header" src="../logo/logo.png" title="Logo orinoco" alt="logo orinoco">
             </a>
             <nav>
-                <a class="link-home" href="index.html">
+                <a class="link-home return" href="index.html">
                     <img class="logo accueil" src="../logo/home-g.png" title="Accueil" alt="Accueil orinoco">
                 </a>
                 <!-- <a class="lien-panier" href="panier.html">
@@ -28,8 +28,16 @@
         <main>
             <h1>ORINOCO, votre boutique en ligne spécialiste des caméras vintage</h1>
             <section class="recapitulatif-commande">
-               
+                <!-- <div class="resume">
+                    <h2>Bonjour ${varialbe}, merci d'avoir passé commande chez orinoco</h2>
+                    <p id="id">Votre identifiant de commande est le : <br>
+                        ${variable}</p>
+                    <p>Le prix total de vos articles est de ${variable}</p>
+                </div> -->
             </section>
+            <div class="divRetourBoutique divRetourBoutiquePageCommande">
+                <button type="button"><a href="index.html" class="retourBoutique return">Retourner à la boutique</a></button>
+            </div>
         </main>
         <footer>
             <img class="logo footer" src="../logo/logo.png" title="Logo orinoco" alt="logo orinoco">

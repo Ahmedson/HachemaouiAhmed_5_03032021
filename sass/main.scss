@@ -498,6 +498,23 @@ section.section-form{
     
 }
 
+section.recapitulatif-commande{
+    @include flex-center-center;
+    .resume{
+        @include border-bicolour;
+        border-radius: $border-radius;
+        padding: 3rem;
+        margin: 3rem;
+        text-align: center;
+        h2{
+            margin-bottom: 2rem;
+        }
+        #id{
+            margin-bottom: 1rem;
+        }
+    }
+}
+
 .total-prix-articles{
     h2{
         margin-bottom: 0.7rem;
@@ -523,7 +540,6 @@ section.section-form{
 .divSuppression, .divRetourBoutique{
     @include flex-center-center;
     button{
-        padding: .5rem 4rem;
         border-radius: $border-radius;
         background: linear-gradient(to right, $color-secondary,$color-tertiary);
         border: none;
@@ -533,7 +549,7 @@ section.section-form{
         margin-bottom: 3.3rem;
         a{
             display: block;
-            width: 100%;  
+            padding: .5rem 4rem;
         }
     }
 }
@@ -541,6 +557,20 @@ section.section-form{
     color: white;
     text-decoration: none;
     font-size: 1rem;
+}
+#delete-basket{
+    padding: .5rem 4rem;
+}
+.divRetourBoutiquePageCommande{
+    button{
+        @include border-bicolour;
+        background: none;
+        background-color: $color-primary;
+        .retourBoutique{
+            color: black;
+        }
+    }
+    
 }
 section.panier-supprimer, section.panier-vide{
     display: flex;

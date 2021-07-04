@@ -54,7 +54,7 @@ const displayRedPointWithNumberOfProductsInBasket = () => {
             // On rend visible le span en lui ajoutant une classe
             getSpanRedPointForCount().classList.add('visible');
             // On injecte le contenu de la variable totalArticle dans le span
-            getSpanRedPointForCount().innerHTML = totalArticle;
+            getSpanRedPointForCount().textContent = totalArticle;
         }
 
     } else {
@@ -389,7 +389,7 @@ async function send(e) {
     .then(function (value) {
         console.log('vvv Retour du serveur : vvv')
         console.log(value);
-        localStorage.setItem('ClientProductOrder', JSON.stringify(value));
+        localStorage.setItem('ContactOrderIdProducts', JSON.stringify(value));
     })
     .catch(function (error) {
         alert('Une erreur est survenue dans la fonction send => ' + error);

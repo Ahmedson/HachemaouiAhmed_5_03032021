@@ -479,6 +479,29 @@ section.section-form div.div-form div.button #submit:hover {
   animation-fill-mode: both;
 }
 
+section.recapitulatif-commande {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.recapitulatif-commande .resume {
+  background-color: #f1e9f0;
+  border-top: 3px solid #c7834c;
+  border-left: 3px solid #c7834c;
+  border-bottom: 3px solid #7655c9;
+  border-right: 3px solid #7655c9;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  margin: 3rem;
+  text-align: center;
+}
+section.recapitulatif-commande .resume h2 {
+  margin-bottom: 2rem;
+}
+section.recapitulatif-commande .resume #id {
+  margin-bottom: 1rem;
+}
+
 .total-prix-articles h2 {
   margin-bottom: 0.7rem;
 }
@@ -504,7 +527,6 @@ section.section-form div.div-form div.button #submit:hover {
   align-items: center;
 }
 .divSuppression button, .divRetourBoutique button {
-  padding: 0.5rem 4rem;
   border-radius: 0.5rem;
   background: linear-gradient(to right, #c7834c, #7655c9);
   border: none;
@@ -515,13 +537,30 @@ section.section-form div.div-form div.button #submit:hover {
 }
 .divSuppression button a, .divRetourBoutique button a {
   display: block;
-  width: 100%;
+  padding: 0.5rem 4rem;
 }
 
 .retourBoutique {
   color: white;
   text-decoration: none;
   font-size: 1rem;
+}
+
+#delete-basket {
+  padding: 0.5rem 4rem;
+}
+
+.divRetourBoutiquePageCommande button {
+  background-color: #f1e9f0;
+  border-top: 3px solid #c7834c;
+  border-left: 3px solid #c7834c;
+  border-bottom: 3px solid #7655c9;
+  border-right: 3px solid #7655c9;
+  background: none;
+  background-color: #f1e9f0;
+}
+.divRetourBoutiquePageCommande button .retourBoutique {
+  color: black;
 }
 
 section.panier-supprimer, section.panier-vide {
