@@ -347,58 +347,62 @@ const testFormulaireComplet = () => {
     })
 }
 
-    // **********************************************************************************************
-    ;
+// **********************************************************************************************
 
-async function send(e) {
-    e.preventDefault();
-
+const getArrayOfProductIdInLocalStorage = () => {
     let products = [];
 
-    for(let i = 0; i < getArrayProductsInLocalStorage().length; i++) {
+    for (let i = 0; i < getArrayProductsInLocalStorage().length; i++) {
 
         products.push(produitLocalStorage[i].id);
 
     }
+    return products;
+}
 
-
-    contact = {
+const getObjectContact = () => {
+    return contact = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
         address: document.getElementById("address").value,
         city: document.getElementById("city").value,
         email: document.getElementById("email").value,
     }
+}
 
-    // setTimeout(() => {
-        // fetch("https://mockbin.com/request", 
+async function send(e) {
+    e.preventDefault();
+
+    // fetch("https://mockbin.com/request", 
     fetch("http://localhost:3000/api/cameras/order",
-    {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json; charset=UTF-8'
-        },
-        body: JSON.stringify({ contact: contact, products: products})
-    })
-    .then(function (res) {
-        if (res.ok) {
-            return res.json();
-        }
-    })
-    .then(function (value) {
-        console.log('vvv Retour du serveur : vvv')
-        console.log(value);
-        localStorage.setItem('ContactOrderIdProducts', JSON.stringify(value));
-    })
-    .catch(function (error) {
-        alert('Une erreur est survenue dans la fonction send => ' + error);
-    });
-    // }, 100);
+        {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify({ contact: getObjectContact(), products: getArrayOfProductIdInLocalStorage() })
+        })
+        .then(function (res) {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .catch(function (error) {
+            console.log("erreur premier catch :" + error);
+        })
+        .then(function (value) {
+            console.log('vvv Retour du serveur : vvv')
+            console.log(value);
+            localStorage.setItem('ContactOrderIdProducts', JSON.stringify(value));
+        })
+        .catch(function (error) {
+            console.log('Une erreur est survenue dans la fonction send => ' + error);
+        });
 
     // localStorage.removeItem('products');
     window.location.href = '../html/commande.html';
-    
+
 }
 
 let form = document.getElementById("form");

@@ -7,7 +7,6 @@ const remerciementPageCommande = () => {
 
         for (let produit of produitLocalStorage) {
             totalPrice += produit.price;
-            console.log(produit.price);
         }
 
         document.querySelector('.recapitulatif-commande')
@@ -18,15 +17,16 @@ const remerciementPageCommande = () => {
                             <p>Le prix total de vos articles est de ${totalPrice} €</p>
                         </div>`;
 
-        let return_links = document.querySelectorAll('.return');
+        // let return_links = document.querySelectorAll('.return');
         
-        for(let return_link of return_links){
-            return_link.addEventListener('click', () => {
-                localStorage.removeItem('products');
-                localStorage.removeItem('ContactOrderIdProducts');
-            })
-        }
+        // for(return_link of return_links){
+        //     return_link.addEventListener('click', () => {
+        //         localStorage.removeItem('products');
+        //         localStorage.removeItem('ContactOrderIdProducts');
+        //     })
+        // }
         
+        localStorage.clear();
 
     } else {
         window.location.href = "index.html";

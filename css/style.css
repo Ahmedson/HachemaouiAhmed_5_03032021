@@ -108,7 +108,7 @@ h1, .total-prix-articles {
 section.page-accueil {
   display: grid;
   grid-template-columns: repeat(auto-fill, 33%);
-  padding: 3rem;
+  margin: 3rem;
 }
 @media all and (max-width: 1030px) {
   section.page-accueil {

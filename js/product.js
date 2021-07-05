@@ -1,4 +1,13 @@
-const displayProductWhoHasBeenClicked = () => {
+const displayProductWhoHasBeenClicked = async () => {
+    const product = await getProductWhoHasBeenClicked();
+
+    displayProductOnProductPage(product);
+    addEventOnClikOnDivAddOnBasket();
+    displayRedPointWithNumberOfProductsInBasket();
+
+}
+
+const getProductWhoHasBeenClicked = () => {
 
     // window.location renvoie un objet location contenant des informations sur L'URL actuelle
     // search est une propriété qui retourne la partie de l'URL qui suit le symbole « ? », avec ce symbole inclus.
@@ -7,26 +16,37 @@ const displayProductWhoHasBeenClicked = () => {
     // The get() method of the URLSearchParams interface returns the first value associated 
     // to the given search parameter.  URLSearchParams.get('id') 
 
-
     // EXEMPLE EN 3 LIGNES
-    // const quertString_url_id = window.location.search;
-    // const urlSearchParams = new URLSearchParams(quertString_url_id);
+    // const queryString_url_id = window.location.search;
+    // const urlSearchParams = new URLSearchParams(queryString_url_id);
     // const id = urlSearchParams.get('id');
-
-
 
     // EXEMPLE EN 1 LIGNE
     const id = new URLSearchParams(window.location.search).get('id');
+    
+    return fetch(`http://localhost:3000/api/cameras/${id}`)
+        .then((data) => { return data.json()})
+        .then((article) => {return article}) 
+        .catch((error) => { console.log('Une erreur est survenue dans la fonction getProductWhoHasBeenClicked : ' + error);});
 
-    // ON PASSE L'ID DANS LA REQUÊTE
-    fetch(`http://localhost:3000/api/cameras/${id}`)
-        .then(data => data.json())
-        // ON RÉCUPÈRE L'OBJET EXPLOITABLE 
-        .then(article => {
-            // ON INJECTE LE CONTENU DYNAMIQUE GRÂCE AU PROPRIÉTÉ QUI RÉCUPÈRE LES VALEUR DE L'OBJET
+}
 
-            document.querySelector('.page-produit')
-                .innerHTML += `<article id="${article._id}">
+const addEventOnClikOnDivAddOnBasket = () => {
+    let elementPanierPageProduit = document.getElementById('panier');
+
+    elementPanierPageProduit.onselectstart = new Function("return false");
+
+    elementPanierPageProduit.addEventListener('click', (event) => {
+
+        let id = event.currentTarget.parentNode.parentNode.parentNode.id;
+        addProductInLocalStorage(id);
+    });
+}
+
+const displayProductOnProductPage = (article) => {
+
+    document.querySelector('.page-produit')
+        .innerHTML += `<article id="${article._id}">
                                 <div class="image">
                                     <img src="${article.imageUrl}" alt="">
                                 </div>
@@ -52,27 +72,11 @@ const displayProductWhoHasBeenClicked = () => {
                                 </div>
                             </article>`;
 
-            // Injection des options de la liste déroulantes pour les lentilles via boucles for
-            for (let i = 0; i < article.lenses.length; i++) {
-                document.querySelector('#lentille')
-                    .innerHTML += `<option value="${i}">${article.lenses[i]}</option>`;
-            }
-
-            let elementPanierPageProduit = document.getElementById('panier');
-
-            elementPanierPageProduit.onselectstart = new Function("return false");
-
-            elementPanierPageProduit.addEventListener('click', (event) => {
-
-                let id = event.currentTarget.parentNode.parentNode.parentNode.id;
-                addProductInLocalStorage(id);
-
-            });
-        })
-        .catch(function (error) {
-            alert('Une erreur est survenue sur la page product.js : ' + error);
-        });
+    // Injection des options de la liste déroulantes pour les lentilles via boucles for
+    for (let i = 0; i < article.lenses.length; i++) {
+        document.querySelector('#lentille')
+            .innerHTML += `<option value="${i}">${article.lenses[i]}</option>`;
+    }
 }
 
 displayProductWhoHasBeenClicked();
-displayRedPointWithNumberOfProductsInBasket();
