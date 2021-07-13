@@ -2,8 +2,23 @@
     font-family: "belligerent";
     src: url("../font/belligerent.woff") format("woff"),
         url("../font/belligerent.ttf") format("ttf");
-
 }
+
+// **********************************************************************************************
+
+@keyframes bounce{
+    1% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    99% {
+        transform: scale(1);
+    }
+  }
+
+// **********************************************************************************************
 
 $breakpoints : ( 
     phone : 570px,
@@ -17,6 +32,8 @@ $color-secondary: rgb(199 , 131, 76);
 $color-tertiary: rgb( 118, 85, 201);
 
 $border-radius: 0.5rem;
+
+// **********************************************************************************************
 
 @mixin phone {
     @media all and (max-width: map-get($breakpoints, phone)) {
@@ -72,6 +89,7 @@ $border-radius: 0.5rem;
 @mixin backgroundColorDegrade {
     background: linear-gradient(to right, $color-secondary, $color-tertiary);
 }
+// **********************************************************************************************
 
 html, body, *{
     margin: 0;
@@ -81,6 +99,11 @@ html, body, *{
 html,body{
     height: 100%;
     font-family: belligerent ,Arial, Helvetica, sans-serif;
+}
+
+.main-container{
+    max-width: 1500px;
+    margin: auto;
 }
 
 header, footer{
@@ -140,8 +163,7 @@ header, footer{
             .visible{
                 display: inline;
             }
-    }
-    
+        }
     }
 }
 
@@ -156,7 +178,6 @@ h1, .total-prix-articles{
     margin-top: 3.3rem;
     margin-bottom: 3rem;
     padding: 1.5rem;
-    // font-family: belligerent ,Arial, Helvetica, sans-serif;
     border-radius: $border-radius;
     @include border-bicolour;
     @include desktop{
@@ -164,6 +185,8 @@ h1, .total-prix-articles{
         margin-top: 1.5rem;
     }
 }
+
+// **********************************************************************************************
 
 section.page-accueil{
     display: grid;
@@ -175,6 +198,9 @@ section.page-accueil{
     @include ipad{
         grid-template-columns: repeat(auto-fill, 100%);
         padding: 0;
+    }
+    @include phone{
+        margin: 0;
     }
     article{
         text-align: center;
@@ -199,7 +225,6 @@ section.page-accueil{
                 color: black;
                 h2{
                     margin-top: 0.5rem;
-                    // font-family: belligerent ,Arial, Helvetica, sans-serif;
                 }
                 p{
                     margin-top: 0.5rem;
@@ -220,7 +245,6 @@ section.page-accueil{
             border-radius: $border-radius;
             padding: 0.5rem 0;
             .prix{
-                // font-family: belligerent ,Arial, Helvetica, sans-serif;
                 font-weight: bold;
                 font-size: 1.2rem;
                 padding-left: 1rem;
@@ -231,13 +255,15 @@ section.page-accueil{
                 cursor: pointer;
                 padding-right: 1rem;
                 &:hover{
-                        animation: bounce 1s infinite;
-                        animation-fill-mode: both;
+                    animation: bounce 1s infinite;
+                    animation-fill-mode: both;
                 }
             }
         }
     }
 }
+
+// **********************************************************************************************
 
 section.page-produit{
     article{
@@ -332,17 +358,7 @@ section.page-produit{
     }
 }
 
-@keyframes bounce{
-    1% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    99% {
-        transform: scale(1);
-    }
-  }
+// **********************************************************************************************
 
 section.page-panier{
     display: flex;
@@ -361,9 +377,6 @@ section.page-panier{
     }
     @include ipad{
         font-size: 0.8rem;
-    }
-    @include phone{
-        // font-size: 0.5rem;
     }
     article{
         display: flex;
@@ -455,9 +468,6 @@ section.section-form{
     @include desktop{
         width: 80%;
     }
-    // @include phone{
-    //     width: 80%;
-    // }
     div.div-form{
         h2{
             width: 20rem;
@@ -465,11 +475,9 @@ section.section-form{
             text-align: center;
         }
         .input-box{
-            // width: 13rem;
             width: 90%;
             input, label{
                 width: 100%;
-                // width: 20rem;
                 height: 1.3rem;
                 margin: 0.3rem;
             }
@@ -494,8 +502,7 @@ section.section-form{
                 }
             }
         }
-    }
-    
+    }  
 }
 
 section.recapitulatif-commande{
@@ -524,7 +531,6 @@ section.recapitulatif-commande{
         border-radius: $border-radius;
         @include backgroundColorDegrade;
         border: none;
-        // font-family: belligerent ,Arial, Helvetica, sans-serif;
         font-weight: bold;
         font-size: 1.5rem;
         color: white;
@@ -549,7 +555,7 @@ section.recapitulatif-commande{
         margin-bottom: 3.3rem;
         a{
             display: block;
-            padding: .5rem 4rem;
+            padding: .9rem 5rem;
         }
     }
 }
@@ -577,7 +583,6 @@ section.panier-supprimer, section.panier-vide{
     justify-content: center;
     align-items: center;
     text-align: center;
-    // font-family: belligerent ,Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 3.8rem;
     height: 60%;
@@ -585,4 +590,4 @@ section.panier-supprimer, section.panier-vide{
     @include border-bicolour;
 }
 
-// ******************************************
+// **********************************************************************************************

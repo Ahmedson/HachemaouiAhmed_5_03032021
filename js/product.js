@@ -1,52 +1,40 @@
-const displayProductWhoHasBeenClicked = async () => {
+async function displayProductWhoHasBeenClicked() {
+
     const product = await getProductWhoHasBeenClicked();
 
     displayProductOnProductPage(product);
-    addEventOnClikOnDivAddOnBasket();
+    addEventOnClikOnDivAddOnBasket(product._id);
     displayRedPointWithNumberOfProductsInBasket();
-
 }
 
-const getProductWhoHasBeenClicked = () => {
+// **********************************************************************************************
 
+function getProductWhoHasBeenClicked() {
     // window.location renvoie un objet location contenant des informations sur L'URL actuelle
     // search est une propriété qui retourne la partie de l'URL qui suit le symbole « ? », avec ce symbole inclus.
 
-    // The URLSearchParams() constructor creates and returns a new URLSearchParams object.
-    // The get() method of the URLSearchParams interface returns the first value associated 
-    // to the given search parameter.  URLSearchParams.get('id') 
+    //L’interface URLSearchParams définit des méthodes utilitaires pour travailler 
+    // avec la chaîne de requête (les paramètres GET) d’une URL.
+    // URLSearchParams.get() : Retourne la première valeur associée au paramètre de recherche donné.
 
     // EXEMPLE EN 3 LIGNES
     // const queryString_url_id = window.location.search;
     // const urlSearchParams = new URLSearchParams(queryString_url_id);
     // const id = urlSearchParams.get('id');
 
-    // EXEMPLE EN 1 LIGNE
+    // En une ligne
     const id = new URLSearchParams(window.location.search).get('id');
-    
-    return fetch(`http://localhost:3000/api/cameras/${id}`)
-        .then((data) => { return data.json()})
-        .then((article) => {return article}) 
-        .catch((error) => { console.log('Une erreur est survenue dans la fonction getProductWhoHasBeenClicked : ' + error);});
 
+    return getProduct(id);
 }
 
-const addEventOnClikOnDivAddOnBasket = () => {
-    let elementPanierPageProduit = document.getElementById('panier');
+// **********************************************************************************************
 
-    elementPanierPageProduit.onselectstart = new Function("return false");
-
-    elementPanierPageProduit.addEventListener('click', (event) => {
-
-        let id = event.currentTarget.parentNode.parentNode.parentNode.id;
-        addProductInLocalStorage(id);
-    });
-}
-
-const displayProductOnProductPage = (article) => {
+// On affiche le produit en le passant en paramètre pour accèder à ses propriétés et leurs valeurs
+function displayProductOnProductPage(article) {
 
     document.querySelector('.page-produit')
-        .innerHTML += `<article id="${article._id}">
+        .innerHTML = `<article id="${article._id}">
                                 <div class="image">
                                     <img src="${article.imageUrl}" alt="">
                                 </div>
@@ -78,5 +66,21 @@ const displayProductOnProductPage = (article) => {
             .innerHTML += `<option value="${i}">${article.lenses[i]}</option>`;
     }
 }
+
+// **********************************************************************************************
+
+// Crée un événement sur la div ajouter au panier et appelle la fonction d'ajout de produit
+function addEventOnClikOnDivAddOnBasket(id) {
+    let elementPanierPageProduit = document.getElementById('panier');
+
+    elementPanierPageProduit.onselectstart = new Function("return false");
+
+    elementPanierPageProduit.addEventListener('click', () => {
+
+        addProductInLocalStorage(id);
+    });
+}
+
+// **********************************************************************************************
 
 displayProductWhoHasBeenClicked();

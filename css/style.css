@@ -2,6 +2,17 @@
   font-family: "belligerent";
   src: url("../font/belligerent.woff") format("woff"), url("../font/belligerent.ttf") format("ttf");
 }
+@keyframes bounce {
+  1% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  99% {
+    transform: scale(1);
+  }
+}
 html, body, * {
   margin: 0;
   padding: 0;
@@ -10,6 +21,11 @@ html, body, * {
 html, body {
   height: 100%;
   font-family: belligerent, Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  max-width: 1500px;
+  margin: auto;
 }
 
 header, footer {
@@ -119,6 +135,11 @@ section.page-accueil {
   section.page-accueil {
     grid-template-columns: repeat(auto-fill, 100%);
     padding: 0;
+  }
+}
+@media all and (max-width: 570px) {
+  section.page-accueil {
+    margin: 0;
   }
 }
 section.page-accueil article {
@@ -288,17 +309,6 @@ section.page-produit article .panier:hover {
   animation-fill-mode: both;
 }
 
-@keyframes bounce {
-  1% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  99% {
-    transform: scale(1);
-  }
-}
 section.page-panier {
   display: flex;
   flex-direction: column;
@@ -537,7 +547,7 @@ section.recapitulatif-commande .resume #id {
 }
 .divSuppression button a, .divRetourBoutique button a {
   display: block;
-  padding: 0.5rem 4rem;
+  padding: 0.9rem 5rem;
 }
 
 .retourBoutique {
